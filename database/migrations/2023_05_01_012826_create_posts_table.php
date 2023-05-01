@@ -20,8 +20,10 @@ return new class extends Migration
             $table->text('content')->nullable();
             $table->string('image')->nullable();
             $table->enum('status', ['PUBLISHED', 'DRAFT'])->default('PUBLISHED');
-            $table->date('date')->nullable();
+            $table->timestamp('published_date')->useCurrent();
             $table->boolean('featured')->default(0);
+            $table->bigInteger('total_like')->default(0);
+            $table->bigInteger('total_dislike')->default(0);
             $table->string('meta_key')->nullable();
             $table->text('meta_description')->nullable();
             $table->timestamps();
